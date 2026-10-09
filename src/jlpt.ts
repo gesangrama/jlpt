@@ -53,7 +53,7 @@ rl.question("Masukkan nama peserta: ", (namaSiswa) => {
                 let member = (inputMember === 'y'); // Jika ketik 'y' maka nilainya true
 
                 // Pertanyaan 5: Input String
-                rl.question("Pilih metode bayar (Cash/Transfer/E-Wallet): ", (metodeBayar) => {
+                rl.question("Pilih metode bayar (tunai/Transfer/dana): ", (metodeBayar) => {
                     
                     // --- LEVEL 2: NESTED IF PERTAMA (Operator Perbandingan) ---
                     if (skorTes >= 50) {
@@ -64,19 +64,19 @@ rl.question("Masukkan nama peserta: ", (namaSiswa) => {
                             
                             // --- LEVEL 4: NESTED SWITCH KEDUA (Kedalaman Maksimal Paket A) ---
                             switch (metodeBayar.toLowerCase()) {
-                                case "e-wallet":
+                                case "dana":
                                     // Operator Compound (-=)
                                     hargadasar -= diskonMember; 
-                                    console.log(">> Potongan E-Wallet Rp100.000 diterapkan.");
+                                    console.log(">> Potongan Dana Rp100.000 diterapkan.");
                                     break;
                                 case "transfer":
                                     // Operator Compound (-=) dan Aritmatika (/)
                                     hargadasar -= (diskonMember / 2); 
                                     console.log(">> Potongan Transfer Bank Rp50.000 diterapkan.");
                                     break;
-                                case "cash":
+                                case "tunai":
                                     hargadasar -= 0;
-                                    console.log(">> Pembayaran Cash tidak mendapat diskon tambahan.");
+                                    console.log(">> Pembayaran Tunai tidak mendapat diskon tambahan.");
                                     break;
                                 default:
                                     console.log(">> Metode bayar tidak dikenali, harga normal.");
