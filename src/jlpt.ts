@@ -11,9 +11,9 @@ const diskon = 100000; // set diskon tetap 100k
 let harga = 0; // set  harga awal nya 0
 let total = 0; //  set tottal  awlaanya nya 0
 console.log(" sistem jlpt  ");
-console.log("semoga lulus ya banh :3");
+console.log(" KOMBAWA MINASAN KONICHIWA");
 // pertanyaan meminta input nama kalian
-rl.question("Masukkan nama peserta: ", (nama) => {
+rl.question("Masukkan nama: ", (nama) => {
     // pertnyaan meminta kalaian menginput atau memeilih kevel
     rl.question("pilih level n1 n2 n3 n4 n5: ", (pilihLevel) => {
         // LEVEL 1: SWITCH PERTAMA cek level yang akan di pilih supaya sistem bisa nentuin harganya
