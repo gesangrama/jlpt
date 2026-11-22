@@ -14,6 +14,20 @@ console.log(" sistem jlpt  ");
 console.log(" KOMBAWA MINASAN KONICHIWA");
 // pertanyaan meminta input nama kalian
 rl.question("Masukkan nama: ", (nama) => {
+
+    // kondisi jika input kosong
+    if (nama.trim() === "") {
+        console.log("input tidak boleh kosong");
+        rl.close();
+        return;
+    }
+
+    // kondisi jika input angka
+    if (!isNaN(Number(nama))){
+        console.log("input harus huruf");
+        rl.close();
+        return;
+    }
     // pertnyaan meminta kalaian menginput atau memeilih kevel
     rl.question("pilih level n1 n2 n3 n4 n5: ", (pilihLevel) => {
         // LEVEL 1: SWITCH PERTAMA cek level yang akan di pilih supaya sistem bisa nentuin harganya
@@ -30,7 +44,8 @@ rl.question("Masukkan nama: ", (nama) => {
             harga = 360000;  break;
             //kalok ngeti selain n1-n5 program akan berhenti dan memunculkan console lpg di bawah ini
             default: console.log("Tuu level gak ada bro sorry yeee cuman ada n1-n5!"); 
-                rl.close(); return;
+                rl.close();
+                return;
         }
         // Pertanyaan 3: meminta input skor tes kalian
         rl.question("Masukkan hasil skor tes nya ya kakak :3 (0-100): ", (inputSkor) => {
