@@ -12,15 +12,18 @@ Gesang Wahyu Fadilah Ramadhan
 - Membuat fungsi tambah data peserta baru dan validasi input
 
 Stephani Tabita Br Silitonga 
-
 -Penyusun Proposal Laporan dan dokumentasi README
 -
 -
 -
 
 Jihan Berlian Nasywaa Aqiilah
-
 -Penyusun Proposal Laporan dan Flowchart Menu Utama
 -
 -
 -
+Bersama
+1. Merancang dan mengintegrasikan logika perhitungan biaya  tes JLPT N5-N1. diskon bertingkat dan pajak (fondasi materi: swutch dan if 3 tingkat)
+2. membuat input fungsi validasi berlapis di semua fitur menangani input kosong, bukan angka, nilai negatif, dan duplikasi ID agar program tidak crash
+3. Mengintegrasikan seluruh fitur CRUD dan Search ke dalam satu alur program 
+4. Melakukan pengujian akhir setiap fitur, saling mereview Pull Request di GitHub, serta melengkapi laporan akhir (Bab I–III) dan screenshot pengujian.
