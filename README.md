@@ -12,12 +12,14 @@ Gesang Wahyu Fadilah Ramadhan
 - Membuat fungsi tambah data peserta baru dan validasi input
 
 Stephani Tabita Br Silitonga 
+
 -Penyusun Proposal Laporan dan dokumentasi README
 -
 -
 -
 
 Jihan Berlian Nasywaa Aqiilah
+
 -Penyusun Proposal Laporan dan Flowchart Menu Utama
 -
 -
