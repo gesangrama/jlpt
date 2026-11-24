@@ -1,6 +1,6 @@
 sistem pendaftaran dan pembayaran tes Japanese Language Proficiency Test (JLPT)
 Anggota Kelompok:
-1. Gesang Wahyu fadilah Ramadhan (263140701111023)
+1. Gesang Wahyu fadilah Ramadhan (263140701111023) (@gesangrama)
 2. Stephani Tabita Br Silitonga  (263140701111035)
 3. Jihan Berlian Nasywaa Aqiilah (263140701111011)
 Pembagian Tugas Anggota Kelompok:
@@ -9,4 +9,9 @@ Gesang Wahyu Fadilah Ramadhan
 - Membuat fungsi 
 -
 -
-Stephani Tabita Br Silitonga  
+Stephani Tabita Br Silitonga 
+-
+-
+-
+-
+Jihan Berlian Nasywaa Aqiilah
