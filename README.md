@@ -8,3 +8,5 @@ Gesang Wahyu Fadilah Ramadhan
 - Penyusun Proposal Laporan
 - Membuat fungsi 
 -
+-
+Stephani Tabita Br Silitonga  
