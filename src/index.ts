@@ -1,17 +1,71 @@
 // mengimpor readline dari modul redline untuk membaca input dan output dari terminal
+import { log } from 'console';
 import * as readline from 'readline';
+
 // di bawah ini adalah kode untuk antarmuka untuk membaca input dan output dari terminal
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 // di bawah ini deklarasi variable awal contoh let yang dinamis yang bisa di ubah nantinya dan const yang nilainya tetap
+
 const pajak = 0.10; // mengatur pajak tetap 10%
 const diskon = 100000; // set diskon tetap 100k
 let harga = 0; // set  harga awal nya 0
 let total = 0; //  set tottal  awlaanya nya 0
+interface PesertaJLPT {
+    id: string;
+    nama: string;
+    level: string;
+    totalBiaya: number;
+    sudahBayar: boolean;
+}
+const daftarPeserta: PesertaJLPT[] = [
+    {
+        id: "JLPT-001",
+        nama: "rama",
+        level: "n5",
+        totalBiaya: 165000,
+        sudahBayar: true,
+    }
+];
 console.log(" sistem jlpt  ");
 console.log(" KOMBAWA MINASAN KONICHIWA");
+function tampilSemusData() {
+    console.log("\n== Daftar peserta Jlpt ==\n");
+    console.table(daftarPeserta);
+}
+function tampilMenuUtama() 
+{function inputPendaftaran() {
+    console.log("\n== Menu Utama ==");
+    console.log("1 Tambah Peserta (Create)");
+    console.log("2 lihat semua daftar peserta (read all)");
+   console.log("3 lihat detail Peserta ny id (read Detail)");
+    console.log("4 ubah data peserta (delete)");
+    console.log("5 hapus data peserta (delete)");
+    console.log("6 cari dan filter peserta (search)");
+    console.log("7 keluar");
+    rl.question("pilih menu (1-7):",(pilihanMenu) => {
+      rl.question("pilih menu (1-7):", (pilihanMenu) => {
+        switch (pilihanMenu.trim()) {
+            case "1":
+                inputPendaftaran();
+                break;
+            case "2":
+                tampilSemusData();
+                tampilMenuUtama();
+                break;
+            case "7":
+                console.log("Program selesai");
+                rl.close();
+                break;
+            default:
+                console.log("pilihan tidak valid");
+                tampilMenuUtama();
+        }
+    });
+    })
+}
 // pertanyaan meminta input nama kalian
 rl.question("Masukkan nama: ", (nama) => {
 
@@ -87,3 +141,5 @@ rl.question("Masukkan nama: ", (nama) => {
         });
     });
 });
+}
+tampilMenuUtama();
