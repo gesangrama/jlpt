@@ -35,18 +35,17 @@ function tampilSemusData() {
     console.log("\n== Daftar peserta Jlpt ==\n");
     console.table(daftarPeserta);
 }
-function tampilMenuUtama() 
-{function inputPendaftaran() {
+function tampilMenuUtama() {
     console.log("\n== Menu Utama ==");
     console.log("1 Tambah Peserta (Create)");
     console.log("2 lihat semua daftar peserta (read all)");
-   console.log("3 lihat detail Peserta ny id (read Detail)");
-    console.log("4 ubah data peserta (delete)");
+    console.log("3 lihat detail Peserta ny id (read Detail)");
+    console.log("4 ubah data peserta (update)");
     console.log("5 hapus data peserta (delete)");
     console.log("6 cari dan filter peserta (search)");
     console.log("7 keluar");
-    rl.question("pilih menu (1-7):",(pilihanMenu) => {
-      rl.question("pilih menu (1-7):", (pilihanMenu) => {
+
+    rl.question("pilih menu (1-7):", (pilihanMenu) => {
         switch (pilihanMenu.trim()) {
             case "1":
                 inputPendaftaran();
@@ -64,8 +63,10 @@ function tampilMenuUtama()
                 tampilMenuUtama();
         }
     });
-    })
 }
+
+
+function inputPendaftaran() {
 // pertanyaan meminta input nama kalian
 rl.question("Masukkan nama: ", (nama) => {
 
@@ -135,7 +136,7 @@ rl.question("Masukkan nama: ", (nama) => {
                     // output hasil perhitugan 
                   console.log("totalbayar " + nama + " : Rp " + total);
                     // Menutup terminal atau proses readline
-                    rl.close();
+                    tampilMenuUtama();
                 });
             });
         });
