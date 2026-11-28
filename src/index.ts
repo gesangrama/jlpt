@@ -1,37 +1,99 @@
 // mengimpor readline dari modul redline untuk membaca input dan output dari terminal
 import * as readline from 'readline';
+
 // di bawah ini adalah kode untuk antarmuka untuk membaca input dan output dari terminal
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 // di bawah ini deklarasi variable awal contoh let yang dinamis yang bisa di ubah nantinya dan const yang nilainya tetap
+
 const pajak = 0.10; // mengatur pajak tetap 10%
 const diskon = 100000; // set diskon tetap 100k
 let harga = 0; // set  harga awal nya 0
 let total = 0; //  set tottal  awlaanya nya 0
+interface PesertaJLPT {
+    id: string;
+    nama: string;
+    level: string;
+    totalBiaya: number;
+    sudahBayar: boolean;
+}
+const daftarPeserta: PesertaJLPT[] = [
+    {
+        id: "JLPT-001",
+        nama: "rama",
+        level: "n5",
+        totalBiaya: 165000,
+        sudahBayar: true,
+    }
+];
 console.log(" sistem jlpt  ");
 console.log(" KOMBAWA MINASAN KONICHIWA");
+function tampilSemusData() {
+    console.log("\n== Daftar peserta Jlpt ==\n");
+    console.table(daftarPeserta);
+}
+function tampilMenuUtama() {
+    console.log("\n== Menu Utama ==");
+    console.log("1 Tambah Peserta (Create)");
+    console.log("2 lihat semua daftar peserta (read all)");
+    console.log("3 lihat detail Peserta ny id (read Detail)");
+    console.log("4 ubah data peserta (update)");
+    console.log("5 hapus data peserta (delete)");
+    console.log("6 cari dan filter peserta (search)");
+    console.log("7 keluar");
+
+    rl.question("pilih menu (1-7):", (pilihanMenu) => {
+        switch (pilihanMenu.trim()) {
+            case "1":
+                inputPendaftaran();
+                break;
+            case "2":
+                tampilSemusData();
+                tampilMenuUtama();
+                break;
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+                console.log("masih proses.");
+                tampilMenuUtama();
+                break;
+            case "7":
+                console.log("Program selesai");
+                rl.close();
+                break;
+          default:
+                console.log("\n[ERROR] Pilihan tidak valid! Masukkan angka 1-7.\n");
+                tampilMenuUtama();
+        }
+    });
+}
+
+
+function inputPendaftaran() {
 // pertanyaan meminta input nama kalian
 rl.question("Masukkan nama: ", (nama) => {
 
     // kondisi jika input kosong
+
     if (nama.trim() === "") {
         console.log("input tidak boleh kosong");
-        rl.close();
+        tampilMenuUtama();
         return;
     }
 
     // kondisi jika input angka
     if (!isNaN(Number(nama))){
         console.log("input harus huruf");
-        rl.close();
+        tampilMenuUtama();
         return;
     }
     // pertnyaan meminta kalaian menginput atau memeilih kevel
     rl.question("pilih level n1 n2 n3 n4 n5: ", (pilihLevel) => {
         // LEVEL 1: SWITCH PERTAMA cek level yang akan di pilih supaya sistem bisa nentuin harganya
-        switch (pilihLevel) {
+        switch (pilihLevel.trim().toLowerCase()) {
             case "n5":
          harga = 250000; break;
             case "n4":
@@ -44,15 +106,15 @@ rl.question("Masukkan nama: ", (nama) => {
             harga = 360000;  break;
             //kalok ngeti selain n1-n5 program akan berhenti dan memunculkan console lpg di bawah ini
             default: console.log("Tuu level gak ada bro sorry yeee cuman ada n1-n5!"); 
-                rl.close();
+               tampilMenuUtama();
                 return;
-        }
+                }
         // Pertanyaan 3: meminta input skor tes kalian
         rl.question("Masukkan hasil skor tes nya ya kakak :3 (0-100): ", (inputSkor) => {
             let skorTes = Number(inputSkor); // ubah tipe string dari terminal jadi tipe angka
             // Pertanyaan 4: Input boolean atau input number yang di ubah menjadi boolen
             rl.question("apakah kamu member ? (y/n): ", (inputMember) => {
-                let member = (inputMember == 'y'); // Jika ketik 'y' maka nilainya true
+                let member = (inputMember.trim().toLowerCase() == 'y'); // Jika ketik 'y' maka nilainya true
                 // Pertanyaan 5: Input String atau input metode bayar yang akan di pilih
                 rl.question(" bayar (tunai/transfer/dana): ", (metodeBayar) => {
                     // LEVEL 2: IF (cek batas lulus minimal skor 50) ini buat perbandingan skor tes kalian dengan minimal lulus 50
@@ -60,7 +122,7 @@ rl.question("Masukkan nama: ", (nama) => {
                         //  LEVEL 3: IF KEDUA (Operator Logika &&) (cek dapet promo atau nggak, wajib skor >=80 DAN statusnya member)
                         if (skorTes >= 80 && member == true) {  
                             // --- LEVEL 4:SWITCH (buat nentuin potongan harga dari cara bayarnya) Paket A) ---
-                            switch (metodeBayar) {
+                     switch (metodeBayar.trim().toLowerCase()) {
                                 case "dana":
                                     // Operator perhitungan diskon (-=)
                                     harga -= diskon; break;// jika memakai dana dapet diskon full 100k
@@ -81,9 +143,11 @@ rl.question("Masukkan nama: ", (nama) => {
                     // output hasil perhitugan 
                   console.log("totalbayar " + nama + " : Rp " + total);
                     // Menutup terminal atau proses readline
-                    rl.close();
+                    tampilMenuUtama();
                 });
             });
         });
     });
 });
+}
+tampilMenuUtama();
