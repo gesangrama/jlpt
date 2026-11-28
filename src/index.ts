@@ -1,5 +1,4 @@
 // mengimpor readline dari modul redline untuk membaca input dan output dari terminal
-import { log } from 'console';
 import * as readline from 'readline';
 
 // di bawah ini adalah kode untuk antarmuka untuk membaca input dan output dari terminal
@@ -54,12 +53,19 @@ function tampilMenuUtama() {
                 tampilSemusData();
                 tampilMenuUtama();
                 break;
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+                console.log("masih proses.");
+                tampilMenuUtama();
+                break;
             case "7":
                 console.log("Program selesai");
                 rl.close();
                 break;
-            default:
-                console.log("pilihan tidak valid");
+          default:
+                console.log("\n[ERROR] Pilihan tidak valid! Masukkan angka 1-7.\n");
                 tampilMenuUtama();
         }
     });
@@ -71,22 +77,23 @@ function inputPendaftaran() {
 rl.question("Masukkan nama: ", (nama) => {
 
     // kondisi jika input kosong
+
     if (nama.trim() === "") {
         console.log("input tidak boleh kosong");
-        rl.close();
+        tampilMenuUtama();
         return;
     }
 
     // kondisi jika input angka
     if (!isNaN(Number(nama))){
         console.log("input harus huruf");
-        rl.close();
+        tampilMenuUtama();
         return;
     }
     // pertnyaan meminta kalaian menginput atau memeilih kevel
     rl.question("pilih level n1 n2 n3 n4 n5: ", (pilihLevel) => {
         // LEVEL 1: SWITCH PERTAMA cek level yang akan di pilih supaya sistem bisa nentuin harganya
-        switch (pilihLevel) {
+        switch (pilihLevel.trim().toLowerCase()) {
             case "n5":
          harga = 250000; break;
             case "n4":
@@ -99,15 +106,15 @@ rl.question("Masukkan nama: ", (nama) => {
             harga = 360000;  break;
             //kalok ngeti selain n1-n5 program akan berhenti dan memunculkan console lpg di bawah ini
             default: console.log("Tuu level gak ada bro sorry yeee cuman ada n1-n5!"); 
-                rl.close();
+               tampilMenuUtama();
                 return;
-        }
+                }
         // Pertanyaan 3: meminta input skor tes kalian
         rl.question("Masukkan hasil skor tes nya ya kakak :3 (0-100): ", (inputSkor) => {
             let skorTes = Number(inputSkor); // ubah tipe string dari terminal jadi tipe angka
             // Pertanyaan 4: Input boolean atau input number yang di ubah menjadi boolen
             rl.question("apakah kamu member ? (y/n): ", (inputMember) => {
-                let member = (inputMember == 'y'); // Jika ketik 'y' maka nilainya true
+                let member = (inputMember.trim().toLowerCase() == 'y'); // Jika ketik 'y' maka nilainya true
                 // Pertanyaan 5: Input String atau input metode bayar yang akan di pilih
                 rl.question(" bayar (tunai/transfer/dana): ", (metodeBayar) => {
                     // LEVEL 2: IF (cek batas lulus minimal skor 50) ini buat perbandingan skor tes kalian dengan minimal lulus 50
@@ -115,7 +122,7 @@ rl.question("Masukkan nama: ", (nama) => {
                         //  LEVEL 3: IF KEDUA (Operator Logika &&) (cek dapet promo atau nggak, wajib skor >=80 DAN statusnya member)
                         if (skorTes >= 80 && member == true) {  
                             // --- LEVEL 4:SWITCH (buat nentuin potongan harga dari cara bayarnya) Paket A) ---
-                            switch (metodeBayar) {
+                     switch (metodeBayar.trim().toLowerCase()) {
                                 case "dana":
                                     // Operator perhitungan diskon (-=)
                                     harga -= diskon; break;// jika memakai dana dapet diskon full 100k
